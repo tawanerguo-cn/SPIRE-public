@@ -1,0 +1,169 @@
+topic = "atom_localization_and_spectroscopic_classification"
+schema_version = 1
+updated_on = "2026-07-21"
+review_status = "draft_research_not_protocol"
+
+[[papers]]
+id = "lafleur_phark_2024"
+title = "Automated Classification of Individual Atoms on Surfaces Using Machine Learning"
+authors = ["Angéline Lafleur", "Soo-hyon Phark"]
+year = 2024
+venue = "arXiv:2410.13711"
+doi = "10.48550/arXiv.2410.13711"
+url = "https://arxiv.org/abs/2410.13711"
+open_access_url = "https://arxiv.org/pdf/2410.13711"
+access = "open_access_preprint"
+license = "CC BY 4.0"
+status = "read"
+review_depth = "full_article_methods_results_and_limitations"
+tags = ["esr_stm", "titanium", "iron", "mgo", "atom_detection", "sts_classification"]
+spire_relevance = "Directly matches the target workflow: detect many atoms in a large STM image, crop and center each candidate, acquire STS, then classify TiO, TiB, Fe and Unknown."
+
+[[papers]]
+id = "diao_et_al_2025"
+title = "AI-Equipped Scanning Probe Microscopy for Autonomous Site-Specific Atomic-Level Characterization at Room Temperature"
+authors = ["Zhuo Diao", "Keiichi Ueda", "Linfeng Hou", "Fengxuan Li", "Hayato Yamashita", "Masayuki Abe"]
+year = 2025
+published_online = 2024
+venue = "Small Methods 9(1), 2400813"
+doi = "10.1002/smtd.202400813"
+url = "https://doi.org/10.1002/smtd.202400813"
+open_access_url = "https://ir.library.osaka-u.ac.jp/repo/ouka/all/98303/SmallMethods_smtd.202400813.pdf"
+access = "open_access"
+license = "CC BY 4.0"
+status = "read"
+review_depth = "full_article_methods_results_and_drift_sections"
+tags = ["site_specific", "keypoint_detection", "yolov8", "drift_compensation", "sts", "tip_monitoring"]
+spire_relevance = "Separates tip/sample validity, adsorbate detection and atomic-site keypoints into distinct models, then performs drift-corrected repeated I-V measurements."
+
+[[papers]]
+id = "thomas_et_al_2022"
+title = "Autonomous Scanning Probe Microscopy Investigations over WS2 and Au{111}"
+authors = ["John C. Thomas", "Antonio Rossi", "Darian Smalley", "et al."]
+year = 2022
+venue = "npj Computational Materials 8, 99"
+doi = "10.1038/s41524-022-00777-9"
+url = "https://doi.org/10.1038/s41524-022-00777-9"
+open_access_url = "not_included_in_public_release"
+access = "open_access"
+license = "CC BY 4.0"
+status = "read"
+review_depth = "full_article_workflow_drift_and_spectral_classification_sections"
+tags = ["autonomous_sts", "one_dimensional_cnn", "gaussian_process", "drift_tracking", "nanonis"]
+spire_relevance = "Demonstrates image-referenced point spectroscopy, 1D spectral classification, interval-image drift correction and uncertainty-driven target selection through the Nanonis programming interface."
+
+[[papers]]
+id = "ziatdinov_et_al_2022_atomai"
+title = "AtomAI Framework for Deep Learning Analysis of Image and Spectroscopy Data in Electron and Scanning Probe Microscopy"
+authors = ["Maxim Ziatdinov", "Ayana Ghosh", "Chun Yin Wong", "et al."]
+year = 2022
+venue = "Nature Machine Intelligence 4, 1101-1112"
+doi = "10.1038/s42256-022-00555-8"
+url = "https://doi.org/10.1038/s42256-022-00555-8"
+open_access_url = "https://arxiv.org/pdf/2105.07485"
+access = "open_access_preprint"
+license = "CC BY 4.0"
+status = "screened"
+review_depth = "abstract_architecture_and_position_refinement_sections"
+tags = ["atomai", "segmentation", "position_refinement", "image_spectrum", "open_source"]
+spire_relevance = "Provides a reusable analysis option for class-based atomic positions and position refinement, but should remain behind SPiRE analysis interfaces rather than becoming a workflow dependency."
+
+[[papers]]
+id = "dickbreder_et_al_2023"
+title = "unDrift: A Versatile Software for Fast Offline SPM Image Drift Correction"
+authors = ["Tobias Dickbreder", "Franziska Sabath", "Lukas Höltkemeier", "Ralf Bechstein", "Angelika Kühnle"]
+year = 2023
+venue = "Beilstein Journal of Nanotechnology 14, 1225-1237"
+doi = "10.3762/bjnano.14.101"
+url = "https://doi.org/10.3762/bjnano.14.101"
+open_access_url = "https://www.beilstein-journals.org/bjnano/content/pdf/2190-4286-14-101.pdf"
+access = "open_access"
+license = "CC BY 4.0"
+status = "read"
+review_depth = "full_article_algorithms_metadata_and_limitations"
+tags = ["drift", "cross_correlation", "scan_metadata", "sxm", "calibration"]
+spire_relevance = "not_included_in_public_release"
+
+[[papers]]
+id = "ziatdinov_et_al_2020"
+title = "Robust Multi-Scale Multi-Feature Deep Learning for Atomic and Defect Identification in Scanning Tunneling Microscopy on H-Si(100) 2x1 Surface"
+authors = ["Maxim Ziatdinov", "Udi Fuchs", "James H. G. Owen", "John N. Randall", "Sergei V. Kalinin"]
+year = 2020
+venue = "arXiv:2002.04716"
+doi = "10.48550/arXiv.2002.04716"
+url = "https://arxiv.org/abs/2002.04716"
+access = "public_preprint"
+license = "not_recorded"
+status = "screened"
+review_depth = "abstract_and_workflow_summary"
+tags = ["multi_scale", "atom_finding", "defect_finding", "contaminants", "step_edges"]
+spire_relevance = "Argues for separate image assessment, atom finding and defect finding stages so contaminants, steps and noise are not silently converted into atoms."
+
+[[papers]]
+id = "perasso_et_al_2015"
+title = "An Automatic Method for Atom Identification in Scanning Tunnelling Microscopy Images of Fe-Chalcogenide Superconductors"
+authors = ["A. Perasso", "C. Toraci", "A. M. Massone", "et al."]
+year = 2015
+venue = "Journal of Microscopy 260(3), 302-311"
+doi = "10.1111/jmi.12297"
+url = "https://doi.org/10.1111/jmi.12297"
+access = "publisher_page"
+license = "not_recorded"
+status = "screened"
+review_depth = "abstract_and_metadata"
+tags = ["deterministic_pipeline", "fuzzy_clustering", "atomic_species", "stm_image"]
+spire_relevance = "Provides a pre-deep-learning precedent for a staged image-processing and fuzzy-clustering atom identification pipeline."
+
+[[papers]]
+id = "wang_et_al_2020"
+title = "Machine Learning Identification of Impurities in the STM Images"
+authors = ["Ce Wang", "Haiwei Li", "Zhenqi Hao", "et al."]
+year = 2020
+venue = "Chinese Physics B 29, 116805"
+doi = "10.1088/1674-1056/abc0d5"
+url = "https://doi.org/10.1088/1674-1056/abc0d5"
+open_access_url = "https://cpb.iphy.ac.cn/EN/article/downloadArticleFile.do?attachType=PDF&id=122927"
+access = "publisher_open_pdf"
+license = "not_recorded"
+status = "screened"
+review_depth = "abstract_methods_summary_and_confidence_discussion"
+tags = ["multi_bias", "impurity", "attention", "sim_to_real", "confidence"]
+spire_relevance = "Shows that multi-bias evidence and explicit confidence handling can reduce reliance on unphysical short-range features learned from simulated data."
+
+[[papers]]
+id = "zhu_et_al_2024"
+title = "Autonomous Scanning Tunneling Microscopy Imaging via Deep Learning"
+authors = ["Zhiwen Zhu", "Shaoxuan Yuan", "Quan Yang", "Hao Jiang", "Fengru Zheng", "Jiayi Lu", "Qiang Sun"]
+year = 2024
+venue = "Journal of the American Chemical Society 146(42), 29199-29206"
+doi = "10.1021/jacs.4c11674"
+url = "https://doi.org/10.1021/jacs.4c11674"
+access = "publisher_page"
+license = "not_recorded"
+status = "screened"
+review_depth = "abstract_methods_summary_and_code_availability"
+tags = ["autonomous_stm", "object_recognition", "adsorbates", "survey", "open_source_code"]
+spire_relevance = "Demonstrates large-area autonomous surveying with a separate adsorbate-recognition model and provides an open-source Nanonis automation implementation for design comparison."
+
+[[papers]]
+id = "barker_sweetman_2025"
+title = "Automated Collection and Categorisation of STM Images and STS Spectra with and without Machine Learning"
+authors = ["Dylan Stewart Barker", "Adam Sweetman"]
+year = 2025
+venue = "Beilstein Journal of Nanotechnology 16, 1367-1379"
+doi = "10.3762/bjnano.16.99"
+url = "https://doi.org/10.3762/bjnano.16.99"
+access = "open_access"
+license = "CC BY 4.0"
+status = "read"
+review_depth = "full_article_spectral_classification_and_workflow_sections"
+tags = ["deterministic", "machine_learning", "sts_classification", "unknown", "low_data"]
+spire_relevance = "Supports starting with auditable deterministic spectral features and keeping raw spectra for a later ML comparison when labeled data are limited."
+
+[[technical_sources]]
+id = "nanonis_atom_tracking"
+title = "Nanonis Atom Tracking"
+publisher = "SPECS Surface Nano Analysis GmbH"
+url = "https://www.specs-group.com/nanonis/products/detail/atom-tracking/"
+status = "screened"
+spire_relevance = "The official module can track a local extremum and compensate drift between point-spectroscopy operations; SPiRE should wrap its official API when present rather than implement raw TCP control."

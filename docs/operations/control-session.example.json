@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "host": "127.0.0.1",
+  "port": 6503,
+  "timeout_s": 3.0,
+  "active_run_db": "run.sqlite",
+  "authorization": "authorization.json",
+  "stop_file": "control.stop",
+  "output_directory": "control-results",
+  "purpose": "Current experiment conditioning",
+  "presets": {
+    "pulse": {"action": "apply_bias_pulse", "arguments": {"target_bias_v": 1, "duration_ms": 10}},
+    "poke": {"action": "poke", "arguments": {"depth_nm": 1}},
+    "move": {"action": "move", "arguments": {}},
+    "scan": {"action": "scan", "arguments": {"frame_time_s": 600, "direction_up": true}}
+  }
+}

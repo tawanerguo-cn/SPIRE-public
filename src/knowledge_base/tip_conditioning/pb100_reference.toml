@@ -1,0 +1,75 @@
+[reference]
+id = "pb100_tip_quality_reference"
+surface = "Pb(100)"
+status = "operator_accepted_first_group; second_group_unreviewed"
+created_on = "2026-10-06"
+executable = false
+empirical_local_reference_available = true
+candidate_data_available = false
+automatic_acceptance_calibrated = false
+authorizes_live_action = false
+candidate_index = "not_included_in_public_release"
+preview = "not_included_in_public_release"
+experiment_id = "private_reference_not_published"
+experiment_database = "<LOCAL_DATA_ROOT>"
+archive_receipt = "not_included_in_public_release"
+source_kind = "operator_accepted_sample_marker_with_native_file_chronology"
+operator_cue = "Historical workflow heuristic: before TF, a conditioning-like feature in both the scan and spectrum was treated as evidence that tip conditioning may have succeeded. This is an indirect cue, not an independent confirmation of Pb identity, tip state, or causal action."
+identity_scope = "操作员与TF元数据标为Pb(100)；保留Ag文件前缀。物理批次与针态连续性未知。"
+
+[local_reference]
+id = "pb100_accepted_sample_reference"
+reviewed_on = "2026-10-06"
+reviewer = "operator"
+verdict = "accepted_sample_reference"
+label_zh = "第一组不错，作为样品标"
+operator_quote = "Historical site reference; original source logs and data are not included in this release."
+selection = "展示的第一组；第二组未认可。"
+scope = "所示短图与平均谱、两次原始sweep；整体2分，分项未单独评分。"
+numeric_grade_assigned = true
+numeric_grade = 2
+numeric_grade_reviewed_on = "2026-10-07"
+numeric_grade_quote = "Pb那个整体按照老分数就2分吧。"
+raw_sxm = "not_included_in_public_release"
+raw_sxm_sha256 = "not_published"
+scan_acquired_local = "2026-09-27 (local time withheld)"
+scan_coverage_fraction = 0.390625
+raw_dat = "not_included_in_public_release"
+raw_dat_sha256 = "not_published"
+spectrum_acquired_local = "2026-09-27 (local time withheld)"
+didv_column = "LI Demod 1 X [AVG] (A)"
+original_sweeps = 2
+operator_label = "not_included_in_public_release"
+accepted_preview = "not_included_in_public_release"
+rating_card = "not_included_in_public_release"
+limitations = ["Partial scan, not full area or atomic-resolution evidence", "Gap and effective temperature not fitted here", "RF/lock-in/temperature/magnetic-field and tip-state continuity retain unknowns", "No conditioning-action identity or hardware permission inferred", "Does not apply to Ag(100) or Ag(111)"]
+
+[rating_anchor]
+rubric_version = 1
+historical_overall_score = 2
+score_label = "good"
+source_kind = "operator_review"
+card = "not_included_in_public_release"
+
+[imaging]
+target = "按用途检查可辨的台阶/背景或紧凑单叶修针诊断特征、正反扫对应与拖尾/多重响应。"
+reference_scope = "第一组短图可作样品标；未确认紧凑戳痕或原子分辨。"
+not_required = "Au鱼骨不是Pb验收条件；部分图有足够目标证据时不必重扫完整框。"
+
+[spectroscopy]
+target = "在确认低温、磁场、RF状态、偏压零点、调制定义和针尖态密度后，检查原始双侧能隙形状、峰/背景、缺口、单次或重复谱是否满足用途。"
+reference_scope = "第一组平均谱及两次原始sweep可作样品标；未拟合能隙或确定超导针态。"
+comparison = "Normal-metal and superconducting-tip spectra must be distinguished; do not judge tip quality from one fixed Pb peak voltage or effective-temperature fit."
+unknowns = ["Exact bath/electron temperature", "Lock-in amplitude/frequency/definition", "RF state independently confirmed", "Normal vs Pb-coated tip", "Magnetic field", "Tip-state continuity between scan, spectrum and TF"]
+fit_dependency = "private_source_not_included_in_release"
+
+[[sources]]
+doi = "10.1103/PhysRevLett.114.157001"
+url = "https://arxiv.org/abs/1409.6638v2"
+fact = "STS on Pb(111), Pb(110) and Pb(100) shows orientation-dependent weights of two coherence peaks; a single universal peak-shape or gap-value threshold is not justified."
+status = "screened_primary_abstract; not_station_commissioning"
+
+[[sources]]
+path = "not_included_in_public_release"
+fact = "The existing offline model explicitly states normal-tip assumptions and condition-dependent interpretation; fits do not authenticate a reference tip."
+status = "local_implementation_context; not_a_SPiRE_runtime_dependency"

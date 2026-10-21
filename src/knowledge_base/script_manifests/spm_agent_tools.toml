@@ -1,0 +1,78 @@
+[script]
+id = "spm_agent_tools"
+status = "experimental"
+path = "src/runtime_layer/agent_cli.py"
+layer_entrypoint = "runtime_layer.spm_tools.SPMTools"
+access_type = "offline_analysis_and_fake_rehearsal"
+summary = "Agent observation, annotations, spectroscopy evidence and persisted fake campaigns."
+
+[safety]
+instrument_access = "offline_and_fake_only"
+writes_instrument = false
+authorizes_live_action = false
+notes = "Explicit file roots and new artifacts only. No live connection, desktop, arbitrary Python, raw TCP or SafetyGate modification tools."
+
+[[tools]]
+name = "observe_scan"
+read_only = false
+summary = "Observe saved SXM with source hash, physical frame, masks, local candidate analysis and optional native PNG. Modes: metrics, image, joint. Candidates are unverified features."
+
+[[tools]]
+name = "view_scan_region"
+read_only = true
+summary = "Zoom a source-bound scan using full-image pixel coordinates; original raw and processed panels remain paired."
+
+[[tools]]
+name = "quantify_tip_quality"
+read_only = false
+summary = "Saved SXM quality brief: require material and scan_path; optionally supply signal_path and top-origin [r0,r1,c0,c1] background/poke ROIs. All acquired pixels measured when background ROI is omitted. Returns pm/pA/nm metrics, unknown missing evidence and full report path; no automatic acceptance."
+
+[[tools]]
+name = "assess_scan_flatness"
+read_only = false
+summary = "Screen saved SXM terrain from the first acquired complete paired rows (default 12; null=all). Explicit station profile required. Returns flat/terraced/mixed/rough/uncertain screening verdict, source-bound tiles, physical coverage and raw plus per-line linear-fit-subtracted forward/retrace PNG. Offline heuristic, no chemical or tip acceptance and no live buffer read."
+
+[[tools]]
+name = "prepare_atom_plan"
+read_only = false
+summary = "Bind explicitly selected full-grid pixels and excluded rectangles to a hashed historical scan. Save fake-only plan and return annotated preview."
+
+[[tools]]
+name = "inspect_spectrum"
+read_only = false
+summary = "Inspect explicit saved bias and signal channels, zero/nonfinite quality, reviewed reference applicability and unknown rejection. Optional native PNG."
+
+[[tools]]
+name = "run_fake_atom_plan"
+read_only = false
+summary = "Execute a persisted plan ONLY with FakeNanonisBackend using existing bounded move/acquire workflow. Commit every acquired spectrum before classification. Results are synthetic and do not identify real atoms."
+
+[[tools]]
+name = "inspect_atom_run"
+read_only = true
+summary = "Read committed atom campaign events with a pagination cursor, including raw spectra from partial or failed runs. Never resumes or repeats acquisition."
+
+[[tools]]
+name = "inspect_recording"
+read_only = false
+summary = "Read a consistent recorder snapshot; return a compact process timeline, contextual low-information annotations, timing and file-completeness warnings. Persist full evidence-linked summary/annotations. No instrument connection; database status is not process liveness."
+
+[[tools]]
+name = "describe_instrument_service"
+read_only = true
+summary = "Discover registered typed Nanonis capabilities, per-wrapper bounded actions, SafetyGate bounds and agent tools from their existing registries. Code availability is not live commissioning or authorization. No hardware connection."
+
+[[tools]]
+name = "run_fake_coarse_relocation"
+read_only = false
+summary = "Rehearse explicit Z+ retreat steps, XY direction/steps/group, then Auto Approach, using FakeNanonisBackend only. Persist stage evidence and failures. Does not pulse, retry, or assess tip quality; fresh scan/spectrum postcheck remains required. No live option."
+
+[[tools]]
+name = "inspect_workflow_run"
+read_only = true
+summary = "Read paginated durable events from a generated workflow run, including incomplete and failed stages. Never resume, repeat movement or pulse."
+
+[[tools]]
+name = "inspect_signal_window"
+read_only = false
+summary = "Measure one explicitly bounded committed I/Z/XY window using fixed noise, jump and drift metrics. Flag gaps, clipping, frozen data and incomplete windows. Missing context/thresholds return metrics only. Persist a source-hashed report; never authorize motion or declare a tip repaired. No hardware connection."

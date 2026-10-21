@@ -1,0 +1,39 @@
+[pattern]
+id = "tip_shaper_waveform_example"
+kind = "tip_shaper_waveform"
+status = "reviewed_detection_example"
+observed_on = "2026-09-09"
+purpose = "Recognition only; does not authorize or recommend executing this procedure."
+source = "Operator confirmed two recorded operations and supplied a Tip Shaper screenshot."
+run_id = "private_reference_not_published"
+confirmed_local_times = ["2026-09-09 (local time withheld)", "2026-09-09 (local time withheld)"]
+runtime_manual_confirmation_required = false
+
+[parameters]
+switch_off_delay_s = 0.05
+change_bias = false
+bias_v = 0.1
+tip_lift_m = -0.6e-9
+lift_time_1_s = 0.2
+bias_lift_v = 0.1
+bias_settling_time_s = 0.2
+lift_height_m = 1e-9
+lift_time_2_s = 0.3
+end_wait_time_s = 0.1
+restore_feedback = true
+
+[screenshot_only]
+switch_gain = false
+note = "Switch Gain is not returned by the existing eleven-field PropsGet API. Lift Height is the second ramp displacement; the final offset is +0.4 nm."
+
+[recognition]
+minimum_current_ratio = 5.0
+minimum_baseline_current_a = 1e-13
+maximum_fit_error_fraction = 0.12
+maximum_xy_span_m = 0.3e-9
+minimum_samples_per_ramp = 5
+maximum_sample_gap_s = 0.06
+minimum_inferred_displacement_m = 0.2e-9
+maximum_inferred_displacement_m = 5e-9
+minimum_peak_current_a = 1e-10
+note = "Thresholds classify evidence, not instrument safety limits. Current clipping is a flag, not a required absolute peak."

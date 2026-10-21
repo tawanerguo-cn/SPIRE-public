@@ -1,0 +1,10 @@
+# 离线评分程序读取；判断正文见 quality_rating.md。
+schema_version = 1
+axes = ["signal_stability", "imaging_usability", "spectroscopy_usability"]
+score_labels = ["not_usable_for_current_target", "usable_not_optimal", "good", "excellent"]
+materials = ["Au(111)", "Ag(111)", "Pb(100)", "Ag(100)"]
+
+[required_axes]
+imaging = ["signal_stability", "imaging_usability"]
+sts = ["signal_stability", "spectroscopy_usability"]
+imaging_and_sts = ["signal_stability", "imaging_usability", "spectroscopy_usability"]

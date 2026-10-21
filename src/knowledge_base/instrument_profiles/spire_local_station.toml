@@ -1,0 +1,177 @@
+[profile]
+id = "spire_local_station"
+status = "reviewed"
+reviewed_on = "2026-08-12"
+station = "SPiRE local Nanonis station"
+application = "Nanonis Mimea"
+# Historical reviewed session; the recorder queries the current session at startup.
+active_session_path = "<LOCAL_DATA_ROOT>"
+
+[z_controller]
+lowest_experiment_setpoint_range_a = [2e-12, 3e-12]
+
+[ccd]
+friendly_name = "UGREEN 25173"
+interface = "UVC"
+windows_driver_service = "usbvideo"
+capture_backend = "opencv_directshow_available"
+spire_vision_gate_status = "not_implemented"
+
+[recording]
+# 2026-09-26 operator request: retain both current-demodulator quadratures.
+# Resolve the full RT catalog on each connection; these are not fixed indexes.
+signal_names = ["Current (A)", "X (m)", "Y (m)", "Z (m)", "LI Demod 1 X (A)", "LI Demod 1 Y (A)"]
+start_condition = "z_controller_control_on_setpoint_window_and_z_inside_limits"
+minimum_effective_current_a = 1.5e-12
+minimum_setpoint_fraction = 0.7
+maximum_setpoint_fraction = 1.5
+minimum_z_limit_clearance_fraction = 1e-4
+minimum_z_limit_clearance_m = 1e-12
+arrival_hold_s = 1.0
+arrival_minimum_samples = 8
+far_noise_current_ceiling_a = 0.75e-12
+far_noise_window_s = 1.0
+far_noise_minimum_samples = 8
+far_noise_hold_s = 0.0
+zctrl_withdraw_closes_segment = false
+
+[safety_policy_reference]
+coarse_minus_z_live_permission = "forbidden"
+motor_move_enforcement = "Motor_StartMove is exposed through typed X+/X-/Y+/Y- and withdraw-only Z+ wrappers; code 5 (Z-) has no wrapper; coarse_xy_move and coarse_z_retract remain live-disabled"
+
+[motor_control]
+official_command = "Motor.StartMove"
+typed_xy_api_status = "implemented_fake_first_live_disabled"
+typed_z_retract_api_status = "implemented_fake_first_live_disabled"
+safety_registry_reference = "instrument_layer.safety.build_default_safety_gate: coarse_xy_move, coarse_z_retract"
+direction_source = "user_review 2026-07-29; official_client_inspection 2026-08-12"
+reviewed_retract_direction = "+Z"
+reviewed_approach_direction = "-Z"
+physical_position_verification = "unavailable_on_local_pmd4"
+local_module_access = "Cannot access Motor Control Module"
+
+[feedback_poke]
+api = "TipShaper.PropsSet/Start"
+toward_sample_tip_lift_sign = -1
+return_lift_height_sign = 1
+turnaround_bias_policy = "Change Bias off; keep current bias throughout equal approach and return."
+restore_feedback_required = true
+live_status = "disabled_pending_commissioning"
+
+[follow_me]
+official_api = "FolMe.XYPosSet/Get"
+position_readback = "implemented"
+nanonis_gui_state_reflection = "live_verified"
+mouse_automation = "forbidden_as_api_substitute"
+commissioning_acceptance = "API readback, GUI coordinate/marker, and subsequent scan position must agree"
+live_status = "commissioned_bounded_action"
+commissioned_on = "2026-08-12"
+
+[scan_control]
+official_start_api = "Scan.Action"
+typed_start_api = "start_scan"
+configuration_policy = "Start only the existing frame, buffer, speed, and Nanonis save settings"
+direction_readback = "unavailable; start direction must be explicit"
+start_live_status = "commissioned_bounded_action"
+commissioned_on = "2026-08-12"
+
+[[evidence]]
+kind = "user_review"
+observed_on = "2026-07-29"
+fact = "-Z approaches the sample; +Z retracts away; live -Z coarse motion is forbidden"
+
+[[evidence]]
+kind = "live_read_only"
+observed_on = "2026-08-12"
+source = "Motor.PosGet groups 1..6"
+fact = "All local PMD4 position probes returned Cannot access Motor Control Module; command acknowledgement cannot be promoted to physical displacement verification"
+
+[[evidence]]
+kind = "official_client_inspection"
+observed_on = "2026-08-12"
+source = "nanonis-spm 1.0.9 Motor.StartMove and Motor.PosGet docstrings"
+fact = "Motor.StartMove defines direction codes 0 X+, 1 X-, 2 Y+, 3 Y-, 4 Z+, and 5 Z-; SPiRE exposes only four separate XY methods and omits both Z codes"
+
+[[evidence]]
+kind = "user_review"
+observed_on = "2026-08-12"
+fact = "Coarse XY may be used in future tip-conditioning workflows, but coarse -Z permission is not granted"
+
+[[evidence]]
+kind = "user_review"
+observed_on = "2026-08-12"
+fact = "A poke should level the voltage before and after the Z excursion so that the poke does not carry a small unintended pulse"
+
+[[evidence]]
+kind = "live_write_commissioning"
+observed_on = "2026-08-12"
+source = "Historical site reference; original source logs and data are not included in this release."
+fact = "Follow Me moved from (-47.1722, -343.3500) nm to the SXM-derived target (-91.4320, -366.7102) nm; API read-back error was approximately 1.05e-6 nm, IXYZ recording continued, and the operator confirmed the Nanonis UI coordinate and marker matched the target feature"
+
+[[evidence]]
+kind = "live_write_commissioning"
+observed_on = "2026-08-12"
+source = "Historical site reference; original source logs and data are not included in this release."
+fact = "start_scan changed Scan.StatusGet from stopped to running in the existing 200 nm x 200 nm, 256 x 256 configuration without any FrameSet, BufferSet, or SpeedSet call; the operator confirmed the scan started in the Nanonis UI and then stopped it manually"
+
+[[evidence]]
+kind = "live_read_only"
+observed_on = "2026-07-30"
+source = "Current (A), ZCtrl.SetpntGet"
+fact = "Withdrawn current absolute maximum over 50 samples was 8.85e-14 A while the configured setpoint was approximately 1.0e-10 A"
+
+[[evidence]]
+kind = "user_review"
+observed_on = "2026-07-30"
+fact = "The primary arrival evidence is measured current relative to the current setpoint; Z being inside its travel limits is only an auxiliary veto against saturated feedback"
+
+[[evidence]]
+kind = "user_review"
+observed_on = "2026-07-30"
+fact = "The lowest current setpoint expected in experiments is approximately 2e-12 to 3e-12 A"
+
+[[evidence]]
+kind = "user_review"
+observed_on = "2026-07-30"
+fact = "Withdrawn current shows an approximately +/-5e-13 A baseline with narrow mechanical transients reaching about +/-2e-12 A, so peak or single-sample thresholds are not sufficient evidence of arrival"
+
+[[evidence]]
+kind = "user_review"
+observed_on = "2026-07-30"
+fact = "After arrival, Controller Off plus confirmed withdrawn Z at the high limit and a noise-only current window closes the IXYZ segment; coarse motion is unobservable and the action timeline ends only with an explicit run end"
+
+[[evidence]]
+kind = "local_os_read_only"
+observed_on = "2026-07-30"
+source = "Windows PnP Camera class and Python package inspection"
+fact = "UGREEN 25173 is connected as a standard UVC USB Video Device using usbvideo; OpenCV is installed, but SPiRE has no commissioned CCD distance classifier or camera-service API"
+
+[[evidence]]
+kind = "typed_control_and_independent_readback"
+observed_on = "2026-09-21"
+source = "Historical site reference; source data are not included in this release."
+fact = "Historical AutoApproach completion_mode=withdrawn did not match this session and the wrapper protected by withdrawing. Later default engaged mode completed with feedback ON and independently observed current. Do not assume the historical GUI completion mode; the cause of the changed terminal state is unproven."
+
+[[evidence]]
+kind = "typed_control_and_independent_readback"
+observed_on = "2026-09-21"
+source = "Historical site reference; source data are not included in this release."
+fact = "One Scan.Action(Start) returned with immediate running=false; existing wrapper issued stop. Independent snapshot confirmed stopped and empty buffer. A new scan subsequently succeeded. Asynchronous timing is only a hypothesis; no blind retry or relaxed postcondition was added."
+
+[[evidence]]
+kind = "official_manual_review"
+observed_on = "2026-09-26"
+source = "Historical site reference; source data are not included in this release."
+fact = "For PMD4, Relay hold-on specifies how long output relays remain closed after moving, after which the output is grounded. Stopping movement, handset/software state, and disabling power/output are distinct. This documentation does not verify the local setting or actual output state and does not authorize switching hardware."
+
+[[evidence]]
+kind = "operator_report_and_live_read_only"
+observed_on = "2026-09-26"
+source = "Historical site reference; source data are not included in this release."
+fact = "One site report associated lower noise with coarse-motion activity ceasing, but the comparison used different current workpoints (~115 pA and ~1 nA), and the transition time was not recorded. A later 20 s read-only window at ~1 nA had a 1000.4 pA median and 1.16 pA standard deviation; the recorder had no switch-time marker. This association does not establish a causal mechanism or bandwidth-matched RMS comparison and is not a general recommendation to power down the driver."
+
+[[evidence]]
+kind = "operator_report_and_local_configuration_review"
+observed_on = "2026-09-28"
+source = "Historical site reference; source data are not included in this release."
+fact = "Operator intentionally stopped the recorder because of interference with ESR-STM transfer-function work; the failure mechanism is unconfirmed. Both local configurations originally selected port 6501. The stopped recorder deployment is now prepared for 6502 with a backup; stop markers remain, no instrument connection or concurrent-measurement acceptance was performed. Development can retain explicit stop/resume handoff; this is not a global port default or permission to auto-resume."

@@ -1,0 +1,29 @@
+[script]
+id = "verify_tip_reference"
+status = "reviewed"
+path = "tools/verify_tip_reference.py"
+layer_entrypoint = "workflow_layer.verify_reviewed_tip_reference"
+access_type = "read_only_file_analysis"
+summary = "Recompute compact post-poke protrusion and Ag(111) dI/dV, reproduce a reviewed reference, or hash-check an explicit ordinal review card for Au/Ag/Pb."
+
+[inputs]
+analyze = ["Historical site reference; source evidence not included in this release."]
+verify = ["reviewed tip-quality reference id"]
+rate = ["explicit review-card JSON", "evidence root; paths must remain inside root"]
+
+[outputs]
+fields = [
+  "source SHA-256",
+  "partial-scan acquired rows",
+  "compact protrusion position, height, FWHM, aspect ratio, and apparent radius",
+  "Z forward/backward correlation",
+  "Ag(111) surface-state onset, dI/dV step, noise, and step-to-noise",
+  "reference reproduction checks",
+  "0..3 supplied axis grades, required-axis minimum or null, review provenance and verified file hashes"
+]
+
+[safety]
+instrument_access = "none"
+writes_instrument = false
+authorizes_live_action = false
+notes = "Analysis results and reference reproduction do not constitute a conditioning recipe or modify SafetyGate."

@@ -1,0 +1,12 @@
+# Copy to recording.local.toml and set a local output directory; that file is Git-ignored.
+# enable/disable preserve these settings. Neither command starts a recorder.
+[recording]
+enabled = false
+root = './tmp/spire-recordings'
+gate_mode = "near_sample"
+observe_gui_actions = false
+data_logger_enabled = false
+
+# Uncomment only after this second Nanonis PI port has been enabled and tested.
+# It must differ from the telemetry port (config/nanonis.toml or NANONIS_PORT).
+# status_port = 6502

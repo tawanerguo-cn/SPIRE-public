@@ -1,0 +1,88 @@
+topic = "agentic_scanning_probe_microscopy"
+schema_version = 1
+updated_on = "2026-09-26"
+review_status = "draft_research_not_protocol"
+
+[[papers]]
+id = "qiu_et_al_2026_aims"
+title = "AIMS: an AI experimentalist turns uncertainty into quantum matter discovery"
+authors = ["Siyuan Qiu", "Philip D. Suh", "Nhat Huy Tran", "Xirui Wang", "Heonjoon Park", "Kutay Akin", "Kevin K. S. Multani", "Seungwon Jung", "Wenkai Cai", "Xinyu Liu", "León Garcia", "Ziyan Zhu", "Chunjing Jia", "Zhantao Chen", "Zhixun Shen", "Zhurun Ji"]
+year = 2026
+venue = "arXiv preprint"
+arxiv_id = "2607.16544"
+doi = "10.48550/arXiv.2607.16544"
+url = "https://arxiv.org/abs/2607.16544"
+version = "v2"
+version_url = "https://arxiv.org/abs/2607.16544v2"
+open_access_url = "https://arxiv.org/pdf/2607.16544v2"
+html_url = "https://arxiv.org/html/2607.16544v2"
+first_submitted_on = "2026-07-17"
+version_date = "2026-08-08"
+accessed_on = "2026-09-18"
+access = "preprint_available"
+license = "arXiv.org perpetual non-exclusive license"
+license_url = "https://arxiv.org/licenses/nonexclusive-distrib/1.0/"
+redistribution_status = "public_redistribution_not_verified; source_attachments_not_included"
+status = "read"
+review_depth = "complete v2 main paper, methods, references and figure captions (13 pages); Figures 1-4 visually inspected; arXiv TeX archive inspected; supplementary information and executable study code unavailable to this review"
+read_on = "2026-09-18"
+supplement_status = "not_found_in_v2_PDF_HTML_or_TeX_archive; author publication pages link to arXiv; supplementary claims not independently checked"
+study_code_status = "paper states available from corresponding authors upon request; not obtained or executed"
+source_archive_url = "https://arxiv.org/src/2607.16544v2"
+tags = ["MIM", "cryogenic", "agent", "MCP", "navigation", "measurement_selection", "uncertainty", "quantum_materials"]
+spire_relevance = "Candidate reference for shared instrument tools and separate navigation, measurement and inference loops; not a reviewed STM conditioning recipe."
+notes_file = "src/knowledge_base/literature/agentic_scanning_probe_microscopy/synthesis.md"
+design_review_file = "docs/research/agentic-spm-design.md"
+
+[[papers.versions]]
+version = "v1"
+date = "2026-07-17"
+title = "AIMS: An uncertainty-aware AI experimentalist for quantum matter"
+url = "https://arxiv.org/abs/2607.16544v1"
+downloaded = false
+
+[[papers.versions]]
+version = "v2"
+date = "2026-08-08"
+url = "https://arxiv.org/abs/2607.16544v2"
+downloaded = true
+
+[[papers]]
+id = "cheng_et_al_2026_quailbot"
+title = "Unmodeled states and uncertain action outcomes in agentic scanning tunneling microscopy"
+authors = ["Siyu Cheng", "Muxian Xu", "Christopher Candelora", "Ilija Zeljkovic"]
+year = 2026
+venue = "arXiv preprint"
+arxiv_id = "2609.27302"
+doi = "10.48550/arXiv.2609.27302"
+url = "https://arxiv.org/abs/2609.27302"
+version = "v1"
+version_url = "https://arxiv.org/abs/2609.27302v1"
+open_access_url = "https://arxiv.org/pdf/2609.27302v1"
+html_url = "https://arxiv.org/html/2609.27302v1"
+first_submitted_on = "2026-09-23"
+version_date = "2026-09-23"
+accessed_on = "2026-09-26"
+access = "preprint_available"
+license = "CC BY 4.0"
+license_url = "https://creativecommons.org/licenses/by/4.0/"
+redistribution_status = "arxiv_lists_CC_BY_4.0; retain_attribution_source_and_license"
+status = "screened"
+review_depth = "abstract, relevant Results/Discussion/Methods and data availability; Figures 1-4 and Table 1 visually inspected; fixed-commit README, LICENSE, extension lifecycle, knowledge rendering/memory/skills, linked readbacks, result-context projection, outcome classification and readback tests inspected; no reproduction"
+supplement_status = "not_in_downloaded_16_page_PDF; separate_SI_not_obtained"
+experimental_data_status = "v1_data_availability_contains_Zenodo_placeholder; raw_SXM_transcripts_and_evaluation_release_not_obtained"
+study_code_url = "https://github.com/BB-84C/quailbot-pi"
+study_code_commit = "not_included_in_public_release"
+study_code_license = "ISC"
+study_code_status = "selected_implementation_paths_and_readback_tests_statically_reviewed; not_executed_or_comprehensively_audited; not_verified_as_paper_run_revision"
+related_driver_urls = ["https://github.com/BB-84C/quail-cli-core", "https://github.com/BB-84C/NanonisSPMController-CLI"]
+tags = ["STM", "Nanonis", "FeTe", "tip_conditioning", "agent", "hidden_state", "action_outcome", "linked_readback"]
+spire_relevance = "Direct prior work for LLM tip conditioning, action-linked readbacks, memory/skills and gated execution; motivates task-specific spectroscopy validation and prospective diagnostic comparisons, not new hardware permissions."
+notes_file = "src/knowledge_base/literature/agentic_scanning_probe_microscopy/synthesis.md"
+design_review_file = "docs/research/agentic-spm-design.md"
+
+[[papers.versions]]
+version = "v1"
+date = "2026-09-23"
+url = "https://arxiv.org/abs/2609.27302v1"
+downloaded = true

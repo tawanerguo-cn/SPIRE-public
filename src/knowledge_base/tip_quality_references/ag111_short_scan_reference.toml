@@ -1,0 +1,127 @@
+[reference]
+# Historical observations remain useful as bounded methodology and metrics;
+# the raw private files are not part of this release.
+source_available = false
+id = "ag111_short_scan_reference"
+status = "reviewed"
+reviewed_on = "2026-08-05"
+station_profile_id = "spire_local_station"
+surface = "Ag(111)"
+sample_id = "withheld"
+verdict = "excellent_tip_reference"
+targets = ["imaging", "sts"]
+operator_summary = "Excellent Ag(111) partial-scan protrusion and dI/dV reference."
+operator_quick_judgment_rule = "A compact, approximately circular, single-lobe protrusion without split or elongated satellites; check Z retrace and the material reference spectrum for STS."
+outcome_scope = "Ag(111) local morphology and one spectrum."
+recipe_inference_permitted = false
+why_good = [
+  "The dI/dV rise is centered at approximately -68 mV, consistent with the clean Ag(111) Shockley surface-state band edge reported near -65 to -67 meV.",
+  "The measured dI/dV step is approximately 3.30 pA over approximately 0.080 pA detrended RMS noise, giving a step-to-noise ratio of about 41.",
+  "The spectrum is continuous across 201 points with no isolated non-physical spike or acquisition dropout in the saved file.",
+  "A partial scan contains a compact single-lobe protrusion at the poked site: approximately 0.73 nm high with 2.40 nm by 2.69 nm interpolated FWHM, aspect ratio about 1.12, and equivalent apparent FWHM radius about 1.27 nm.",
+  "The intentionally stopped partial scan preserves enough forward/backward Z data to show stable retrace agreement with correlation approximately 0.982.",
+  "Stopping a scan once the diagnostic result is already clear is accepted expert practice for this reference and is not a data-quality failure."
+]
+limitations = [
+  "The spectroscopy file contains one saved sweep, so it does not by itself prove sweep-to-sweep or forward/backward reproducibility.",
+  "The client I/X/Y/Z stream omitted 17 estimated acquisition ticks in this segment and did not record Bias (V); it supports physical-effect review but cannot reconstruct an exact pulse waveform.",
+  "The GUI conditioning action was not identified by a typed action event. This reference must not be used to claim whether Bias Pulse, Tip Shaper, Z poke, or another action caused the outcome.",
+  "The partial scan supports early tip-quality recognition but must not be used as a complete-area morphology map.",
+  "The approximately 1.27 nm value is the apparent radius of the imaged protrusion under these conditions, not a direct measurement of the physical tip-apex radius and not yet a universal threshold.",
+  "The private source files and run store are not distributed with this reference. Use the recorded metrics only within the stated historical scope; reference verification requires the original files."
+]
+
+[rating_anchor]
+rubric_version = 1
+historical_overall_score = 3
+score_label = "excellent"
+source_kind = "mapping_of_existing_operator_verdict; not_metric_calibration"
+card = "withheld"
+scope = "Original partial scan and single spectrum; no new long-term or across-position repeatability claim."
+
+[post_conditioning_morphology]
+status = "operator_reviewed_compact_protrusion_outcome"
+evidence_id = "scan_primary"
+feature = "compact approximately circular single-lobe surface protrusion at the poked site, without split lobes or elongated satellite response; corresponding Z retrace"
+metric_source = "evidence[scan_primary].metrics"
+preview = "withheld"
+analysis = "withheld"
+reproduction_code = "withheld"
+display = "Full 100nm frame with missing rows retained plus same-scale forward/retrace crops; plane subtraction only, no smoothing."
+interpretation = "Apparent morphology of the surface mark, not direct tip-apex geometry or radius."
+action_identity = "unknown; historical after-poke review does not identify the exact GUI conditioning command"
+archive_scope = "Private raw parents, telemetry, and review receipt are not distributed in this release."
+
+[provenance]
+segment_id = 2
+action_identity = "unknown"
+action_identity_reason = "No typed conditioning action event in this run."
+
+[time_series]
+recorded_signals = ["Current (A)", "X (m)", "Y (m)", "Z (m)"]
+requested_rate_hz = 50.0
+signal_samples = 9452
+estimated_missing_samples = 17
+coverage_fraction = 0.9982046678635548
+
+[[evidence]]
+id = "scan_primary"
+kind = "nanonis_partial_scan"
+role = "primary_human_quick_check_after_poke"
+observed_at = "2026-08-05 (time withheld)"
+notes = "Intentionally stopped 100 nm x 100 nm scan. Shape metrics use the mean of aligned Z forward/backward data after a local planar-background fit around the marked protrusion. The source scan is private and not distributed here."
+
+[evidence.metrics]
+acquired_rows = 19
+total_rows = 256
+bias_v = -0.2
+setpoint_a = 1e-10
+protrusion_height_m = 7.2845198878805e-10
+protrusion_fwhm_x_m = 2.40159958124903e-9
+protrusion_fwhm_y_m = 2.6934479780208423e-9
+protrusion_fwhm_aspect_ratio = 1.1215225048548796
+protrusion_equivalent_fwhm_radius_m = 1.2716705092250608e-9
+z_forward_backward_correlation = 0.9818543327361227
+
+[[evidence]]
+id = "spectrum_primary"
+kind = "nanonis_bias_spectroscopy"
+role = "primary_sts_quality_evidence"
+observed_at = "2026-08-05 (time withheld)"
+notes = "Single saved sweep with the Z controller held. The source spectrum is private and not distributed here."
+
+[evidence.metrics]
+points = 201
+bias_start_v = -0.2
+bias_stop_v = 0.2
+bias_step_v = 0.002
+settling_time_s = 0.05
+integration_time_s = 0.1
+surface_state_onset_v = -0.068000004
+didv_step_a = 3.296983925347222e-12
+didv_detrended_noise_rms_a = 8.015143803767841e-14
+didv_step_to_noise = 41.1344325949254
+
+[[evidence]]
+id = "run_store"
+kind = "spire_run_store"
+role = "time_series_and_action_provenance"
+observed_at = "2026-08-05 (time withheld)"
+notes = "Finalized private run store. Its underlying time-series source is not distributed here."
+
+[evidence.metrics]
+segment_id = 2
+signal_samples = 9452
+estimated_missing_samples = 17
+coverage_fraction = 0.9982046678635548
+requested_rate_hz = 50.0
+
+[[literature]]
+doi = "10.1016/S0039-6028(01)00704-X"
+url = "https://doi.org/10.1016/S0039-6028(01)00704-X"
+fact = "STS on clean Ag(111) places the Shockley surface-state minimum at approximately -67 meV relative to the Fermi level."
+
+[[literature]]
+doi = "10.1007/s003390101062"
+url = "https://doi.org/10.1007/s003390101062"
+fact = "The Ag(111) surface-state band edge appears as a sharp dI/dV onset near -65 meV followed by an approximately constant contribution above the edge."

@@ -1,0 +1,108 @@
+[reference]
+id = "ag100_tip_quality_reference"
+surface = "Ag(100)"
+status = "operator_accepted_excellent_daytime_reference_20261012"
+active_reference = "daytime_reference"
+sample_id = "private_reference_not_published"
+experiment_id = "private_reference_not_published"
+identity_scope = "设备二当前同一块 Ag(100)；#1/#2 是位置或命名变化，不是两块样品。Ag(111) 参照不适用。"
+executable = false
+empirical_local_reference_available = true
+automatic_acceptance_calibrated = false
+authorizes_live_action = false
+
+[imaging]
+target = "检查来回扫噪声、电流噪声及当前用途所需结构；小戳作为按需诊断，已认可优秀针态不为补戳改变。"
+poke_depth_m = 1e-9
+quantitative_tool = "SPMTools.quantify_tip_quality"
+
+[spectroscopy]
+target = "与本材料优秀参照比较谱形、背景噪声及重复性。"
+reference_status = "operator_review_accepted; native_spectrum_not_yet_linked"
+
+[local_reference]
+reviewed_on = "2026-10-11"
+reviewer = "operator"
+numeric_grade_assigned = false
+review = "not_included_in_public_release"
+status = "人工修针至0068/0069阶段得到比较好的针尖；确切单张编号未指定，两张并存。"
+operator_label = "not_included_in_public_release"
+current_comparison = "not_included_in_public_release"
+poke_measurements = "not_included_in_public_release"
+background_comparison = "not_included_in_public_release"
+noise_label_scope = "0069为操作员认可的很好噪声示例；更高噪声仍可按目标清晰度和电流稳定性判断够用，无固定通过线。"
+scope = "当前Ag(100)人工修针阶段的电流稳定性及局部戳痕/背景；保留原始部分覆盖。"
+
+[[local_reference.scans]]
+role = "poke_morphology"
+path = "not_included_in_public_release"
+sha256 = "not_published"
+preview = "not_included_in_public_release"
+acquired_local = "2026-10-11 (local time withheld)"
+frame_width_m = 2e-8
+coverage_fraction = 0.385009765625
+
+[[local_reference.scans]]
+role = "subsequent_small_background_scan"
+path = "not_included_in_public_release"
+sha256 = "not_published"
+preview = "not_included_in_public_release"
+acquired_local = "2026-10-11 (local time withheld)"
+frame_width_m = 5e-9
+coverage_fraction = 0.169921875
+
+[followup_reference]
+reviewed_on = "2026-10-12"
+reviewer = "operator"
+tip_state_id = "ag100_usable_post_poke_tip_state"
+verdict = "usable_target_for_next_conditioning_session"
+numeric_grade_assigned = false
+accepted_region = "0004下方最后一次戳后的突起及其后的针态；不是整张图所有戳痕。"
+final_poke_observed_local = "2026-10-12 (local time withheld)"
+review = "not_included_in_public_release"
+operator_label = "not_included_in_public_release"
+analysis = "not_included_in_public_release"
+path = "not_included_in_public_release"
+sha256 = "not_published"
+preview = "not_included_in_public_release"
+acquired_local = "2026-10-12 (local time withheld)"
+frame_width_m = 4e-8
+coverage_fraction = 0.607421875
+bias_v = 0.1
+setpoint_a = 1e-10
+quantitative_shape_status = "末次戳痕上缘被停扫后重启的高度突变截断；半高轮廓触边，半径和圆度定量留空。"
+scope = "操作员认可的够用针态；四材料共用形貌判断，数值不作通用通过线。"
+
+[daytime_reference]
+reviewed_on = "2026-10-12"
+reviewer = "operator"
+tip_state_id = "ag100_operator_accepted_daytime_tip_state"
+verdict = "operator_accepted_excellent_reference"
+numeric_grade_assigned = true
+numeric_grade = 3
+signal_score = 3
+imaging_score = 3
+spectroscopy_score = 3
+score_scale = "0-3 operator rubric; not calibrated 0-100 metrics"
+score_source = "operator_review"
+label_zh = "满分形态：谱学优秀、扫图噪声优秀、电噪优秀"
+spectroscopy_evidence_status = "操作员明确评审；本次尚未绑定对应原生谱文件及采集条件，不编造峰位或重复性。"
+poke_required_for_this_acceptance = false
+poke_shape_status = "本针态未新戳；半径和圆度未测，不扣减已认可等级。"
+operator_label = "not_included_in_public_release"
+analysis = "not_included_in_public_release"
+review = "not_included_in_public_release"
+candidate_scan = "not_included_in_public_release"
+preview = "not_included_in_public_release"
+current_evidence = "not_included_in_public_release"
+acquired_local = "2026-10-12 (local time withheld)"
+frame_width_m = 5e-7
+coverage_fraction = 0.6162109375
+bias_v = 0.1
+setpoint_a = 1e-11
+final_intervention_scope = "pulse-like intervention followed by reapproach and relocation; cannot attribute the outcome to one action."
+stable_observation_scope = "73 consecutive 10 s scan windows, RMS 0.303–0.447 pA; position changed during scanning, so this is not a fixed waiting time or acceptance threshold."
+scope = "当前日间针态的谱学、扫图噪声及电噪均为操作员认可的3分；0011与电流窗口为已归档同期证据，谱文件待绑定。未证明原子分辨或戳痕几何；换针态或关键条件后重评。"
+new_poke_shape_measured = false
+replaces_0004_usable_target = false
+authorizes_live_action = false

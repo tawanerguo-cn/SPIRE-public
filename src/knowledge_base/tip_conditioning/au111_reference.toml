@@ -1,0 +1,144 @@
+# Au(111)材料验收：鱼骨、表面态与人工标准样；通用干预策略见 workflow.md。
+[reference]
+id = "au111_imaging_and_spectroscopy_reference"
+surface = "Au(111)"
+status = "literature_target_with_operator_reviewed_local_marker"
+created_on = "2026-09-18"
+executable = false
+empirical_local_reference_available = true
+local_reference_kind = "operator_reviewed_basic_imaging_and_sts; excellent_atomic_imaging_with_unusable_sts; quantitative_acceptance_uncalibrated"
+expected_feature = "Shockley surface-state onset/step in dI/dV, with occupied-state band edge near -0.5 eV relative to EF; qualitative target, not a fixed acceptance tolerance."
+nominal_band_edge_ev = -0.5
+bias_convention = "Convert energy to the instrument's verified sample-bias convention; do not assume channel polarity from a label."
+acceptance_thresholds_status = "not_calibrated_for_this_station"
+local_reference_status = "基本可用图谱与原子成像优秀、谱学不可用两种用途参照。"
+not_interchangeable_with = "ag111_short_scan_reference; preserve the existing Ag(111) reference and its different analysis windows."
+analysis_gap = "自动Au评分未标定；Ag专用谱窗口不适用。"
+
+[local_reference]
+id = "au111_usable_not_optimal_reference"
+reviewed_on = "2026-09-22"
+reviewer = "operator"
+verdict = "usable_tip_not_optimal"
+label_zh = "基本合格，可以使用，但还不是最佳"
+operator_quote = "Historical site reference; original source logs and data are not included in this release."
+acceptance_scope = "该Au针态的电流、鱼骨与表面态达到基本可用；仍有残余噪声。"
+evidence_record = "private_source_not_included_in_release"
+screenshot = "private_source_not_included_in_release"
+screenshot_sha256 = "not_published"
+visible_scan_label = "private_source_not_included_in_release"
+visible_channel = "LI Demod 1 X (A)"
+visible_bias_axis_v = [-1.0, 1.0]
+visible_surface_state_feature = "约-0.5V的台阶；未拟合带边。"
+raw_dat_available = false
+raw_dat_status = "原生谱与截图的坐标、201点及波形匹配。"
+raw_dat_source = "not_included_in_public_release"
+raw_dat_archive = "private_source_not_included_in_release"
+raw_dat_sha256 = "not_published"
+experiment_id = "private_reference_not_published"
+experiment_database = "<LOCAL_DATA_ROOT>"
+raw_curve_reproduction_available = false
+quantitative_reproduction_available = false
+remaining_quality = "Visible spectral fluctuations, fine mesh and scan line jumps; operator explicitly says not especially good."
+recipe_inference_permitted = false
+authorizes_live_action = false
+
+[rating_anchor]
+rubric_version = 1
+historical_overall_score = 1
+score_label = "usable_not_optimal"
+source_kind = "mapping_of_existing_operator_verdict; not_metric_calibration"
+card = "not_included_in_public_release"
+axis_mapping_authority = "analyst_assessment; operator supplied overall label only"
+
+[herringbone]
+criterion = "在未操作背景上识别鱼骨重构的条带与转折，检查正反扫对应；不等同于原子晶格分辨。"
+reference_grade = "operator_accepted_usable_not_optimal"
+raw_sxm = "not_included_in_public_release"
+raw_sxm_sha256 = "not_published"
+acquired_local = "2026-09-22 (local time withheld)"
+frame_m = [1e-7, 1e-7]
+pixels = [256, 256]
+bias_v = -0.1
+setpoint_a = 1e-10
+resaved_identity = "截图标0017，与0016采集时间及所有原始通道数组相同；不是新一次采集。"
+limitations = ["细网纹与行跳变仍存在", "本参照不要求或证明原子分辨"]
+
+[summary_data]
+package = "private_source_not_included_in_release"
+manifest = "private_source_not_included_in_release"
+archive_receipt = "not_included_in_public_release"
+
+[atomic_imaging_reference]
+id = "au111_excellent_atomic_imaging_reference"
+reviewed_on = "2026-10-13"
+reviewer = "operator"
+imaging_score = 3
+spectroscopy_score = 0
+score_scale = "0-3 operator rubric; not calibrated 0-100 metrics"
+imaging_purpose_verdict = "excellent_tip_when_subsequent_experiment_only_requires_atomic_imaging"
+signal_numeric_grade_assigned = false
+scope = "设备一 Au(111) 原子晶格周期成像；慢扫有畸变，不作原子位置计量。"
+operator_label = "not_included_in_public_release"
+evidence_index = "not_included_in_public_release"
+archive_receipt = "not_included_in_public_release"
+analysis = "not_included_in_public_release"
+sts_evidence = "not_included_in_public_release"
+review = "not_included_in_public_release"
+experiment_id = "private_reference_not_published"
+nearest_neighbour_period_nm = 0.29
+bias_v = 1.0
+setpoint_a = 1e-10
+tip_continuity = "操作员确认夜间 STS 至原子图未修针；跨位置采集。后来重新进针未复现，不回推原针态。"
+
+[[atomic_imaging_reference.scans]]
+path = "not_included_in_public_release"
+sha256 = "not_published"
+preview = "not_included_in_public_release"
+detail = "not_included_in_public_release"
+paired_complete_rows = 400
+total_rows = 400
+angle_deg = 0.0
+
+[[atomic_imaging_reference.scans]]
+path = "not_included_in_public_release"
+sha256 = "not_published"
+preview = "not_included_in_public_release"
+paired_complete_rows = 174
+total_rows = 400
+angle_deg = 30.0
+
+[atomic_imaging_reference.prior_pokes]
+experiment_id = "private_reference_not_published"
+replay = "not_included_in_public_release"
+scope = "前序人工修整的紧凑、单叶戳痕对照；非原子图同点同步证据，不认定某一戳造成原子分辨。"
+action_identity = "unknown; waveform_and_configuration_inference_only"
+last_agent_poke_morphology = "动作146未被0024/0026覆盖；不能用人工0030/0035补成该动作的后检。"
+
+[[atomic_imaging_reference.prior_pokes.scans]]
+path = "not_included_in_public_release"
+sha256 = "not_published"
+preview = "not_included_in_public_release"
+conditions = "+1 V；保存头1 nA，采集时记录器100 pA；40 nm部分图。"
+
+[[atomic_imaging_reference.prior_pokes.scans]]
+path = "not_included_in_public_release"
+sha256 = "not_published"
+preview = "not_included_in_public_release"
+conditions = "+1 V、1 nA；30 nm框的约30×6 nm已采条带；同图内有修整。"
+
+# Literature anchors are separate from the local human marker.
+
+[[sources]]
+doi = "10.3762/bjnano.2.60"
+url = "https://www.beilstein-journals.org/bjnano/articles/2/60"
+title = "Terthiophene on Au(111): A scanning tunneling microscopy and spectroscopy study"
+locator = "Results and Discussion, spectroscopy on bare Au(111), Figure 3"
+fact = "Bare-Au comparison reports a Shockley surface-state edge near -0.5 eV. This is not a local station reference curve."
+
+[[sources]]
+doi = "10.1103/PhysRevB.70.033401"
+url = "https://arxiv.org/abs/cond-mat/0402083"
+title = "Stark effect of the Au(111) and Cu(111) surface states"
+locator = "Abstract"
+fact = "Tip approach can shift the surface-state binding energy; the band-edge target must retain junction-condition dependence."

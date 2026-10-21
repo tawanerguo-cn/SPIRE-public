@@ -1,0 +1,321 @@
+# 当前结构化条目在前；历史证据在后。决策正文见 workflow.md，不在此复制整篇流程。
+# guide/guide_section/material_references、以 workflow.md 开头的引用及 morphology_references 的 reference_file 相对本目录；其余文件引用相对仓库根，冒号后为条目定位。
+[library]
+id = "spire_local_tip_conditioning"
+schema_version = 2
+updated = "2026-10-13"
+executable = false
+purpose = "本站STM修针参数与来源；决策正文见workflow.md。"
+promotion_authority = "operator_instruction"
+execution_boundary_reference = "docs/operations/authorized-control.md"
+guide = "README.md"
+quality_rubric = "quality_rating.toml"
+prior_full_text = "git:5ae204c:src/knowledge_base/tip_conditioning/local_experience.toml"
+operator_source = "Historical site reference; source data are not included in this release."
+
+[workflow]
+id = "stm_adaptive_tip_conditioning"
+status = "operator_reviewed_decision_guidance; automated_policy_unimplemented"
+source_kind = "operator_instruction_with_historical_signal_crosscheck"
+source_date = "2026-09-22"
+executable = false
+guide = "workflow.md"
+scope = "通用STM修针策略；数值来自本站，材料只决定用途验收。"
+selection = "先确定后续实验用途，再按当前针态选择动作；改善后保留候选，长期不佳时考虑重整。"
+entry = "assess_current_tip"
+hardware_bounds_source = "instrument_layer.safety.SafetyGate"
+implementation_reference = "docs/operations/authorized-control.md"
+signal_tool = "SPMTools.inspect_signal_window"
+optional_morphology_analyzer = "analysis_layer.tip_reference_verification.analyze_compact_protrusion"
+analysis_selection = "按当前目标选分析；单凸起分析不是所有成像质量的默认验收。"
+prior_attempts_reference = "private_source_not_included_in_release"
+guidance_review = "private_source_not_included_in_release"
+
+[[workflow.stages]]
+id = "assess_current_tip"
+guide_section = "workflow.md#先确定后续实验需要什么"
+success = "明确后续实验用途、所需质量项目及当前缺陷；只做成像不要求谱学通过。"
+
+[[workflow.stages]]
+id = "pulse_assess"
+bounded_action = "bias_pulse"
+guide_section = "workflow.md#动作怎样选"
+success = "信号候选只用于下一步判断；不是成像/谱学验收。"
+
+[[workflow.stages]]
+id = "coarse_relocate"
+bounded_actions = ["z_controller_set", "coarse_z_retract", "coarse_xy_move", "auto_approach"]
+guide_section = "workflow.md#干净位置与阶段性检验"
+parameter_entry = "after_pulse_relocate"
+success = "确认新区域接触和区域身份。"
+
+[[workflow.stages]]
+id = "scan_select_flat_site"
+guide_section = "workflow.md#扫图策略"
+analysis_tool = "SPMTools.assess_scan_flatness"
+success = "新鲜图像及原始正反线支持干净、平坦、未操作点；可用短段。"
+
+[flatness_screen_profiles.ag100_site_screen_v1]
+status = "experimental_offline_heuristic_not_operator_approved_thresholds"
+scope = "本站 Ag(100) 保存后的 Z 正反图初筛；数值是可回放的分析设置，不是洁净度、针态或硬件门槛。"
+source = "Historical site reference; source data are not included in this release."
+
+[flatness_screen_profiles.ag100_site_screen_v1.settings]
+tile_columns = 16
+tile_rows = 8
+residual_limit_pm = 30.0
+retrace_limit_pm = 80.0
+step_minimum_pm = 80.0
+minimum_flat_fraction = 0.7
+
+[[workflow.stages]]
+id = "tip_shaper_poke"
+bounded_actions = ["follow_me_move", "tip_shaper"]
+guide_section = "workflow.md#动作怎样选"
+success = "执行/恢复证据齐全；力度选择和最终质量仍须判断。"
+
+[[workflow.stages]]
+id = "deep_restructure"
+bounded_action = "tip_shaper"
+guide_section = "workflow.md#动作怎样选"
+parameter_entry = "five_nm_strong_intervention_experience"
+success = "长期不佳时重整，改善后回到轻动作和检验。"
+
+[[workflow.stages]]
+id = "image_postcheck"
+guide_section = "workflow.md#干净位置与阶段性检验"
+success = "干净背景、当前用途的图谱及后续电流判断是否够用；需形貌诊断时结合完整戳痕，已认可优秀针态不为补戳改变。"
+
+[[workflow.stages]]
+id = "spectroscopy_postcheck"
+bounded_action = "bias_spectroscopy"
+guide_section = "workflow.md#干净位置与阶段性检验"
+success = "仅后续实验需要测谱时进入；明确结条件，按当前材料比较谱。"
+
+[material_references]
+au111 = "au111_reference.toml"
+ag111 = "../tip_quality_references/ag111_short_scan_reference.toml"
+pb100 = "pb100_reference.toml"
+ag100 = "ag100_reference.toml"
+
+[morphology_acceptance]
+materials = ["Au(111)", "Ag(111)", "Pb(100)", "Ag(100)"]
+guide = "quality_rating.md#修针后形貌参照"
+spectroscopy_requirement = "determined_by_experiment_purpose"
+purpose_guide = "workflow.md#先确定后续实验需要什么"
+purpose_source = "not_included_in_public_release"
+source = "Historical site reference; source data are not included in this release."
+
+[morphology_references.ag100_usable_final_poke]
+reference_file = "ag100_reference.toml"
+reference_section = "followup_reference"
+status = "operator_accepted_usable_target"
+
+[morphology_references.ag111_compact_protrusion]
+reference_file = "../tip_quality_references/ag111_short_scan_reference.toml"
+reference_section = "post_conditioning_morphology"
+evidence_id = "partial_scan_0034"
+status = "existing_operator_reviewed_excellent_outcome"
+scope = "修针位置的单叶/近圆突起及正反扫对应；动作身份未知，非真实针尖半径或通用尺寸阈值。"
+
+[morphology_references.au111_manual_comparison]
+review = "not_included_in_public_release"
+preview = "not_included_in_public_release"
+status = "historical_shape_improvement_with_residual_noise; not_accepted_tip_standard"
+scope = "Tip Shaper型波形及局部戳痕对照；扫描中有针态改变，形貌改善不代表最终信号/谱学验收。"
+
+[[entries]]
+id = "after_pulse_relocate"
+title = "选择粗动换区时的本站参数"
+applicability = "current_guidance"
+status = "operator_provided_site_experience"
+source_kind = "operator_instruction"
+source_date = "2026-09-21"
+source_text = "离开pulse损伤区；沿正向+X或+Y，横移400–500步。"
+trigger = "after_a_pulse_series_has_a_stable_signal_candidate_and_relocation_is_selected"
+sequence = ["coarse_z_withdraw", "coarse_xy_relocate", "auto_approach", "fresh_postcheck"]
+coarse_z_withdraw_steps = 10
+coarse_xy_nominal_steps = 450
+coarse_xy_operator_range_steps = [400, 500]
+step_counts_are = "本站经验，不是实际间隙测量或SafetyGate边界。"
+z_direction_reference = "src/knowledge_base/instrument_profiles/spire_local_station.toml: motor_control"
+physical_completion = "命令返回不证明真实位移；细Withdraw不能代替粗+Z步数。"
+evidence = "private_source_not_included_in_release"
+
+[[entries]]
+id = "operator_tip_conditioning_decision_tree"
+title = "本站干预参数及选点"
+applicability = "current_guidance"
+status = "operator_guidance_updated_20260922"
+source_kind = "operator_instruction"
+source_date = "2026-09-20"
+pulse_voltage_presets_v = [-10.0, 10.0]
+pulse_preset_clarification = "通常直接用标准±10V，极性/时长明确；操作员经验是不必每发微调幅度，重点看结果反馈。"
+scope_update_date = "2026-10-06"
+conditioning_scope_reference = "docs/operations/authorized-control.md"
+operator_pulse_duration_ms = 200
+operator_duration_scope = "操作员常用值；接口范围见conditioning_scope_reference。"
+poke_site_depth_recommendation_m = 1e-9
+poke_site_depth_rationale = "常规精修约1nm及以下。"
+poke_site_usual_upper_m = 2e-9
+poke_bias_policy = "保持工作偏压，Change Bias关闭，等幅去回并恢复反馈。"
+poke_relocation = "每次新平坦点；不能原位反复，不反复扫描旧损伤区。"
+partial_scan_strategy_reference = "workflow.md#扫描速度怎么调"
+conditioning_site_guide = "workflow.md#干净位置与阶段性检验"
+pulse_continuation_guide = "workflow.md#动作怎样选"
+pulse_guidance_update_date = "2026-10-11"
+guide = "workflow.md"
+evidence = ["Historical site reference; source evidence not included in this release."]
+
+[[entries]]
+id = "five_nm_strong_intervention_experience"
+title = "长期不佳时深重整，改善后回到轻动作"
+applicability = "current_guidance"
+status = "operator_reviewed_site_intervention_severity"
+source_kind = "operator_instruction"
+source_date = "2026-09-22"
+source_text = "5nm的戳针是很大的幅度啊，这个我的感觉是比我们现在的标准pulse还大的"
+scope = "本站定性力度经验，不是跨模式能量标定。"
+qualitative_severity_order = ["poke_le_1nm", "standard_10V_pulse", "poke_ge_5nm"]
+qualitative_severity_order_direction = "weak_to_strong"
+strong_poke_from_m = 5e-9
+deep_poke_operator_example_m = 5e-8
+operator_deep_poke_quote = "在pulse始终无法达到要求时，可以使用更深的poke，50nm都是可以接受的。"
+handling = "长期不佳时重整；改善后回到轻动作和检验。"
+parameter_role = "操作员的强度经验与深戳例子。"
+evidence = "private_source_not_included_in_release"
+
+[pulse_scoring]
+source_date = "2026-09-22"
+guidance_reviewed_on = "2026-10-11"
+guidance_review = "private_source_not_included_in_release"
+status = "reviewed_dimensions; numeric_score_uncalibrated"
+relationship = "parallel_dimensions_not_sequence"
+executable = false
+priority = "恢复后电流偏差与波动优先，Z变化次要；并列留证不代表等权。"
+aggregation_status = "numeric_score_uncalibrated"
+missing_evidence = "unknown_not_zero_or_pass"
+guide = "workflow.md#pulse-的验收参考"
+
+[pulse_scoring.dimensions.final_stability]
+operator_criterion = "恢复后的电流稳定性是核心；电流接近设定值，波动和跳变不妨碍当前测量。"
+evidence = ["紧邻等长前后窗", "电流偏差和RMS/设定值", "恢复及较晚窗口", "I/Z跳变漂移", "条件与采样连续性"]
+interpretation = "同时报告绝对可用性和相对变化；不自动推出图谱通过。"
+
+[pulse_scoring.dimensions.current_peak]
+operator_criterion = "电流峰值能到10nA(-10nA)"
+nominal_absolute_peak_a = 1e-8
+evidence = ["动作本体有符号极值", "极性/时长", "采样覆盖", "量程与限幅"]
+interpretation = "响应线索，不要求维持nA；削顶/漏采不提供真实峰值。"
+
+[pulse_scoring.dimensions.z_change]
+operator_criterion = "Z变小曾被操作员作为去除附着物的线索；后续明确为次要证据。"
+signed_delta_definition = "settled_z_after_m - settled_z_before_m"
+favorable_direction = "negative"
+evidence = ["同XY及工作点", "恢复后的Z前后值", "漂移/运动/恢复上下文"]
+interpretation = "辅助线索，不证明材料去除，不抵销电流表现。"
+
+[quantitative_rating]
+tool = "SPMTools.quantify_tip_quality"
+purpose = "basic_conditioning"
+guide = "quality_rating.md#定量快检"
+groups = ["retrace", "current", "poke"]
+score_range = [0, 100]
+calibration_status = "per_material_anchors_required; no_builtin_acceptance_threshold"
+ag100_poke_depth_m = 1e-9
+material_structure_scores = "planned; see README.md#材料验收"
+
+[fast_execution]
+source_date = "2026-09-21"
+operator_instruction = "快检由固定脚本执行；agent读紧凑结果和必要原图。"
+implementation = "tools/verify_tip_reference.py rate"
+implementation_reference = "docs/operations/authorized-control.md"
+observation_reference = "private_source_not_included_in_release"
+candidate_evidence = "not_included_in_public_release"
+candidate_retention_reference = "workflow.md#从当前结果决定下一步"
+
+[scan_tracking]
+source_date = "2026-10-06"
+source_kind = "operator_instruction"
+scope = "本站STM扫描；按当前跟踪表现调速。"
+guide = "workflow.md#扫描速度怎么调"
+decision_reference = "workflow.md#从当前结果决定下一步"
+source_text = "刮本身也正常，但是刮的频率那么高就不正常了！"
+evidence = "private_source_not_included_in_release"
+
+[exit_policy]
+status = "reviewed_intent; quality_stagnation_rule_uncalibrated"
+guide = "workflow.md"
+protective_exit = "实际失控与预期瞬态、软件错误、质量不足分开；不让严重异常接触等待报告。"
+burst_end = "watchdog结束不证明针不可修复，也不是独立退针依据。"
+quality_stagnation_rule = "看不同干净位置的响应和恢复后效果；几百次pulse本身不构成停止、升级或人工接管理由。"
+handoff = "操作员接管后停止agent控制；旧授权不能用于退针或自动收尾，并发观察不得携带控制动作。"
+
+[post_approach_verification]
+requirement = "真实接触、电流/Z和工作点独立确认后再选框/扫描，不靠返回完成或feedback ON。"
+scan_geometry = "按新区域实际接触位置选择框与起扫路径，不自动套旧框。"
+source = "Historical site reference; source data are not included in this release."
+
+[[entries]]
+id = "multimodal_tip_postcheck"
+title = "图像与数值联合评价"
+applicability = "current_guidance"
+status = "operator_requested_analysis_capability"
+source_kind = "operator_request_and_existing_observation_interface"
+interfaces = ["SPMTools.observe_scan(mode='joint')", "SPMTools.observe_scan(mode='image')", "SPMTools.view_scan_region"]
+assessment_fields = ["source_observation_id", "visible_evidence", "uncertainty_and_competing_explanations", "usable_morphology", "atomic_resolution_evidence", "spectroscopy_evidence", "comparison_conditions_changed"]
+guide = "quality_rating.md"
+classification_boundary = "analysis_not_operator_label_or_calibrated_probability"
+
+# 历史案例索引；经过见evidence，当前决策见workflow.md。
+[[entries]]
+id = "variable_tip_shaper_signature"
+title = "可变幅度Tip Shaper识别"
+applicability = "historical_evidence"
+status = "retrospective_observation"
+source_kind = "recorded_signals_and_states"
+source_run = "private_reference_not_published"
+observation = "波形识别示例；Bias Lift不等于独立pulse。"
+evidence = "private_source_not_included_in_release"
+
+[[entries]]
+id = "manual_deep_contact_improvement"
+title = "手动深接触后的改善"
+applicability = "historical_evidence"
+status = "recorded_facts; mechanism_unverified"
+source_kind = "operator_report_and_readonly_frozen_recording"
+observation = "深重整后电流改善，随后小幅修整取得可用图谱。"
+evidence = "private_source_not_included_in_release"
+
+[[entries]]
+id = "resaved_scan_not_new_acquisition"
+title = "新保存文件可能来自旧缓存"
+applicability = "historical_evidence"
+status = "verified_site_file_comparison"
+source_kind = "saved_raw_sxm_arrays_and_acquisition_headers"
+observation = "新文件可能保存旧缓存；核对采集时间与数组。"
+evidence = "private_source_not_included_in_release"
+
+[[entries]]
+id = "fan_off_adjacent_pulse_recovery_windows"
+title = "环境变化及相邻pulse恢复窗口"
+applicability = "historical_evidence"
+status = "recorded_facts; no_score_calibration"
+source_kind = "operator_report_and_recorded_windows"
+observation = "环境变化及恢复窗口选择会影响前后比较。"
+evidence = "private_source_not_included_in_release"
+
+[[entries]]
+id = "manual_takeover_prior_pulse_history"
+title = "先前pulse与人工恢复不能从复盘中省略"
+applicability = "historical_evidence"
+status = "operator_confirmed_episode; causal_assignment_unresolved"
+source_kind = "operator_report_and_frozen_signals_with_gaps"
+observation = "人工恢复前已有pulse；判断须接续动作前史。"
+evidence = "private_source_not_included_in_release"
+
+[provenance]
+local_report = "<LOCAL_DATA_ROOT>"
+local_event_index = "<LOCAL_DATA_ROOT>"
+portable_regression_fixture = "tests/fixtures/tip_shaper_variants.json"
+hardware_access_reference = "docs/operations/authorized-control.md"

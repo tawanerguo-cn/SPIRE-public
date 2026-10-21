@@ -1,0 +1,20 @@
+[script]
+id = "inspect_scan"
+status = "experimental"
+path = "tools/inspect_scan.py"
+layer_entrypoint = "workflow_layer.scan_observation.inspect_saved_scan"
+access_type = "read_only_file_analysis"
+summary = "Source-bound SXM observation, physical coordinates, masked candidates and optional scientific PNG previews."
+
+[inputs]
+required = ["saved SXM path"]
+optional = ["processing", "detector settings", "new output directory"]
+
+[outputs]
+fields = ["source hash", "frame", "valid mask", "candidate features", "quality", "optional PNG and NPZ bundle"]
+
+[safety]
+instrument_access = "none"
+writes_instrument = false
+authorizes_live_action = false
+notes = "New output directory only; candidates are unverified image features."

@@ -1,0 +1,162 @@
+topic = "automatic_tip_conditioning"
+schema_version = 1
+updated_on = "2026-07-20"
+review_status = "draft_research_not_protocol"
+
+[[papers]]
+id = "rashidi_wolkow_2018"
+title = "Autonomous Scanning Probe Microscopy in Situ Tip Conditioning through Machine Learning"
+authors = ["Mohammad Rashidi", "Robert A. Wolkow"]
+year = 2018
+venue = "ACS Nano 12(6), 5185-5189"
+doi = "10.1021/acsnano.8b02208"
+url = "https://doi.org/10.1021/acsnano.8b02208"
+open_access_url = "https://arxiv.org/abs/1803.07059"
+access = "preprint_available"
+license = "not_recorded"
+status = "screened"
+review_depth = "abstract_and_relevant_results_sections"
+tags = ["image_quality", "cnn", "majority_vote", "closed_loop", "silicon"]
+spire_relevance = "Known atomic defects can serve as repeated tip-quality references; multiple observations reduce false repair triggers."
+
+[[papers]]
+id = "gordon_junqueira_moriarty_2020"
+title = "Embedding Human Heuristics in Machine-Learning-Enabled Probe Microscopy"
+authors = ["Oliver M. Gordon", "Filipe L. Q. Junqueira", "Philip J. Moriarty"]
+year = 2020
+venue = "Machine Learning: Science and Technology 1, 015001"
+doi = "10.1088/2632-2153/ab42ec"
+url = "https://doi.org/10.1088/2632-2153/ab42ec"
+open_access_url = "https://arxiv.org/abs/1907.13401"
+access = "open_access"
+license = "CC BY 3.0"
+status = "screened"
+review_depth = "abstract_and_relevant_methods_sections"
+tags = ["partial_scan", "rolling_window", "real_time", "tip_state"]
+spire_relevance = "Tip quality should be assessed from rolling scan-line windows so a bad scan can be stopped before a full frame completes."
+
+[[papers]]
+id = "krull_et_al_2020"
+title = "Artificial-Intelligence-Driven Scanning Probe Microscopy"
+authors = ["Alexander Krull", "P. Hirsch", "C. Rother", "Agustin Schiffrin", "C. Krull"]
+year = 2020
+venue = "Communications Physics 3, 54"
+doi = "10.1038/s42005-020-0317-3"
+url = "https://doi.org/10.1038/s42005-020-0317-3"
+open_access_url = "https://www.nature.com/articles/s42005-020-0317-3.pdf"
+access = "open_access"
+license = "CC BY 4.0"
+status = "screened"
+review_depth = "abstract_results_methods_and_safety_relevant_sections"
+tags = ["deepspm", "cnn", "reinforcement_learning", "site_selection", "long_run"]
+spire_relevance = "Separates bad region, lost contact and crash detection from tip diagnosis; uses a finite action set, clean-area masks and post-action imaging."
+
+[[papers]]
+id = "wang_et_al_2021"
+title = "Automated Tip Conditioning for Scanning Tunneling Spectroscopy"
+authors = ["Shenkai Wang", "Junmian Zhu", "Raymond Blackwell", "Felix R. Fischer"]
+year = 2021
+venue = "The Journal of Physical Chemistry A 125(6), 1384-1390"
+doi = "10.1021/acs.jpca.0c10731"
+url = "https://doi.org/10.1021/acs.jpca.0c10731"
+open_access_url = "https://par.nsf.gov/servlets/purl/10309510"
+access = "public_manuscript"
+license = "redistribution_not_verified"
+status = "screened"
+review_depth = "abstract_methods_results_and_discussion_sections"
+tags = ["sts_quality", "au111", "site_selection", "machine_learning", "reference_spectrum"]
+spire_relevance = "A tip that images sharply may still be unsuitable for STS; the repair goal and postcheck must include a task-specific reference spectrum."
+
+[[papers]]
+id = "alldritt_et_al_2022"
+title = "Automated Tip Functionalization via Machine Learning in Scanning Probe Microscopy"
+authors = ["Benjamin Alldritt", "Fedor Urtev", "Niko Oinonen", "Markus Aapro", "Juho Kannala", "Peter Liljeroth", "Adam S. Foster"]
+year = 2022
+venue = "Computer Physics Communications 273, 108258"
+doi = "10.1016/j.cpc.2021.108258"
+url = "https://doi.org/10.1016/j.cpc.2021.108258"
+open_access_url = "https://acris.aalto.fi/ws/portalfiles/portal/77785520/Automated_tip_functionalization_via_machine_learning_in_scanning_probe_microscopy.pdf"
+access = "open_access"
+license = "CC BY 4.0"
+status = "screened"
+review_depth = "full_short_article_screening"
+tags = ["functionalization", "co_tip", "cnn", "verification", "operator_handoff"]
+spire_relevance = "Tip functionalization is a distinct workflow from generic sharpening and needs its own target state, verification image and retry ceiling."
+
+[[papers]]
+id = "diao_hou_abe_2023"
+title = "Probe Conditioning via Convolution Neural Network for Scanning Probe Microscopy Automation"
+authors = ["Zhuo Diao", "Linfeng Hou", "Masayuki Abe"]
+year = 2023
+venue = "Applied Physics Express 16, 085002"
+doi = "10.35848/1882-0786/acecd6"
+url = "https://doi.org/10.35848/1882-0786/acecd6"
+access = "publisher_page"
+license = "not_recorded"
+status = "screened"
+review_depth = "abstract_and_metadata"
+tags = ["multi_class", "cnn", "room_temperature", "silicon"]
+spire_relevance = "A multi-class condition label can be more useful than a single good/bad score when selecting a recovery branch."
+
+[[papers]]
+id = "barker_et_al_2024"
+title = "Automated Scanning Probe Tip State Classification without Machine Learning"
+authors = ["Dylan Stewart Barker", "Philip James Blowey", "Timothy Brown", "Adam Sweetman"]
+year = 2024
+venue = "ACS Nano 18(3), 2384-2394"
+doi = "10.1021/acsnano.3c10597"
+url = "https://doi.org/10.1021/acsnano.3c10597"
+open_access_url = "https://eprints.whiterose.ac.uk/id/eprint/208756/1/barker-et-al-2024-automated-scanning-probe-tip-state-classification-without-machine-learning.pdf"
+access = "open_access"
+license = "CC BY 4.0"
+status = "screened"
+review_depth = "abstract_and_classifier_methods_sections"
+tags = ["template_matching", "cross_correlation", "circularity", "low_data"]
+spire_relevance = "A deterministic first classifier can be commissioned with one reviewed reference image instead of a large labeled dataset."
+
+[[papers]]
+id = "ceddia_et_al_2024"
+title = "Scanbot: An STM Automation Bot"
+authors = ["Julian Ceddia", "Jack Hellerstedt", "Benjamin Lowe", "Agustin Schiffrin"]
+year = 2024
+venue = "Journal of Open Source Software 9(99), 6028"
+doi = "10.21105/joss.06028"
+url = "https://doi.org/10.21105/joss.06028"
+open_access_url = "https://www.theoj.org/joss-papers/joss.06028/10.21105.joss.06028.pdf"
+access = "open_access"
+license = "CC BY 4.0"
+status = "screened"
+review_depth = "full_short_article_screening"
+tags = ["scanbot", "reference_surface", "dual_sample_holder", "automation"]
+spire_relevance = "A dedicated clean reference surface decouples destructive conditioning from the scientific sample and makes location recovery explicit."
+
+[[papers]]
+id = "zhu_et_al_2024"
+title = "Autonomous Scanning Tunneling Microscopy Imaging via Deep Learning"
+authors = ["Zhiwen Zhu", "Shaoxuan Yuan", "Quan Yang", "Hao Jiang", "Fengru Zheng", "Jiayi Lu", "Qiang Sun"]
+year = 2024
+venue = "Journal of the American Chemical Society 146(42), 29199-29206"
+doi = "10.1021/jacs.4c11674"
+url = "https://doi.org/10.1021/jacs.4c11674"
+access = "publisher_page"
+license = "not_recorded"
+status = "screened"
+review_depth = "abstract"
+tags = ["cnn", "unet", "dqn", "bare_surface", "autonomous_imaging"]
+spire_relevance = "Combines image-quality classification, bare-surface segmentation and a bounded action policy; confirms the importance of separating perception modules."
+
+[[papers]]
+id = "barker_sweetman_2025"
+title = "Automated Collection and Categorisation of STM Images and STS Spectra with and without Machine Learning"
+authors = ["Dylan Stewart Barker", "Adam Sweetman"]
+year = 2025
+venue = "Beilstein Journal of Nanotechnology 16, 1367-1379"
+doi = "10.3762/bjnano.16.99"
+url = "https://doi.org/10.3762/bjnano.16.99"
+open_access_url = "https://beilstein-journals.org/bjnano/content/pdf/2190-4286-16-99.pdf"
+access = "open_access"
+license = "CC BY 4.0"
+status = "screened"
+review_depth = "abstract_methods_results_and_automated_workflow_sections"
+tags = ["deterministic", "machine_learning", "image_quality", "sts_quality", "high_throughput"]
+spire_relevance = "Deterministic methods can reach similar precision with less labeled data, supporting a conservative non-ML MVP while preserving raw data for later ML."

@@ -1,0 +1,52 @@
+[profile]
+id = "spire_local_nanonis"
+status = "reviewed"
+reviewed_on = "2026-08-12"
+coordinate_system = "whole_window_normalized"
+observation_only = true
+mapping_basis = "Local Nanonis Mimea Motor Control window at 396 x 755 px; normalized regions tolerate resizing"
+semantics = "Each complete physical left-button press/release in one mapped control is one operator input event; it is not proof of physical displacement"
+
+[[binding]]
+id = "pmd4_x_negative"
+application_executable = "Nanonis Mimea.exe"
+window_title = "Motor Control"
+window_class = "LVDChild"
+action_name = "coarse_xy_move"
+control_label = "-X"
+normalized_region = [0.460, 0.425, 0.515, 0.466]
+continuous_hold_threshold_ms = 500.0
+arguments = { axis = "x", direction = "-", direction_code = 1, group = 1 }
+
+[[binding]]
+id = "pmd4_x_positive"
+application_executable = "Nanonis Mimea.exe"
+window_title = "Motor Control"
+window_class = "LVDChild"
+action_name = "coarse_xy_move"
+control_label = "+X"
+normalized_region = [0.570, 0.425, 0.625, 0.466]
+continuous_hold_threshold_ms = 500.0
+arguments = { axis = "x", direction = "+", direction_code = 0, group = 1 }
+
+[[binding]]
+id = "pmd4_y_positive"
+application_executable = "Nanonis Mimea.exe"
+window_title = "Motor Control"
+window_class = "LVDChild"
+action_name = "coarse_xy_move"
+control_label = "+Y"
+normalized_region = [0.520, 0.400, 0.565, 0.438]
+continuous_hold_threshold_ms = 500.0
+arguments = { axis = "y", direction = "+", direction_code = 2, group = 1 }
+
+[[binding]]
+id = "pmd4_y_negative"
+application_executable = "Nanonis Mimea.exe"
+window_title = "Motor Control"
+window_class = "LVDChild"
+action_name = "coarse_xy_move"
+control_label = "-Y"
+normalized_region = [0.520, 0.455, 0.565, 0.495]
+continuous_hold_threshold_ms = 500.0
+arguments = { axis = "y", direction = "-", direction_code = 3, group = 1 }

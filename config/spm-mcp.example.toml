@@ -1,0 +1,9 @@
+# Example for the Codex MCP configuration, not automatically installed.
+# Replace the path placeholders with the installation and local data folders.
+[mcp_servers.spire_offline]
+command = "C:/path/to/SPIRE/.venv/Scripts/python.exe"
+args = ["-B", "-m", "runtime_layer.agent_cli", "--mcp", "--read-root", "C:/path/to/local-data", "--output-root", "C:/path/to/SPIRE/tmp/spm-agent"]
+
+[mcp_servers.spire_offline.env]
+MPLCONFIGDIR = "C:/path/to/SPIRE/tmp/mpl-config"
+RUN_LIVE_NANONIS = "0"

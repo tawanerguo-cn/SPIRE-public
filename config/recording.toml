@@ -1,0 +1,35 @@
+[recording]
+# Master permit only. `record` must still be started explicitly and can be stopped with Ctrl+C.
+enabled = false
+# Reviewed lab facts and gate semantics live in knowledge_base/instrument_profiles.
+instrument_profile = "spire_local_station"
+root = './tmp/spire-recordings'
+storage_quota_gib = 100
+storage_warning_gib = 95
+
+# No I/X/Y/Z rows are written while the gate is closed.
+gate_mode = "near_sample"
+gate_poll_interval_s = 0.1
+
+# For now the low-volume action timeline opens at the first confirmed near-sample
+# I/X/Y/Z segment, then remains latched after high-resolution telemetry closes.
+action_audit_start_mode = "tip_near_sample"
+# Coarse motion has no readable state/counter on this station. The action timeline
+# therefore closes only when the run is explicitly ended.
+observe_external_state = true
+external_state_poll_interval_s = 0.1
+
+# Observe completed physical mouse clicks in reviewed Nanonis control regions.
+# This is event-driven: no screenshots, OCR, UI-tree scans, or GUI polling.
+# Explicit opt-in until a supervised desktop check of the Win64 hook is complete.
+# Signal and instrument-state recording work without any global input hook.
+observe_gui_actions = false
+gui_action_binding_profile = "spire_local_nanonis"
+# Optional second Nanonis Programming Interface port. When commissioned,
+# gate/action status reads use this port and cannot delay the 50 Hz telemetry
+# socket. Omit it until that separate port has been enabled in Nanonis.
+# status_port = 6502
+
+# Acquisition-complete IXYZ source. Keep false until the bounded Data Logger
+# configure/start sequence and saved-file behavior have been commissioned live.
+data_logger_enabled = false
